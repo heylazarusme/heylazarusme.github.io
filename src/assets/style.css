@@ -1,0 +1,210 @@
+/* heylazarus.me
+   Teal is lifted from my avatar. Everything else stays out of the way. */
+
+:root {
+  --bg:      #fbfaf7;
+  --ink:     #16181a;
+  --dim:     #63676b;
+  --rule:    #e4e1d9;
+  --accent:  #17796f;
+  --card:    #f2efe8;
+  --measure: 36rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:     #121415;
+    --ink:    #e6e4df;
+    --dim:    #93979b;
+    --rule:   #282c2e;
+    --accent: #5fc4b8;
+    --card:   #1a1d1f;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 17px/1.65 ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.skip {
+  position: absolute; left: -9999px;
+}
+.skip:focus {
+  left: 1rem; top: 1rem; z-index: 10; padding: .5rem .75rem;
+  background: var(--accent); color: var(--bg); border-radius: 4px;
+}
+
+/* ---- header ---------------------------------------------------------- */
+
+.bar {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 1.75rem 1.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: inline-flex; align-items: center; gap: .55rem;
+  font-weight: 650; letter-spacing: -.01em; font-size: 1.02rem;
+  color: var(--ink); text-decoration: none;
+}
+.brand img { border-radius: 5px; display: block; }
+
+.bar nav { display: flex; gap: 1.1rem; }
+.bar nav a {
+  font-size: .875rem; color: var(--dim); text-decoration: none;
+  padding-bottom: 2px; border-bottom: 1.5px solid transparent;
+}
+.bar nav a:hover { color: var(--ink); }
+.bar nav a[aria-current="page"] {
+  color: var(--ink); border-bottom-color: var(--accent);
+}
+
+/* ---- layout ---------------------------------------------------------- */
+
+main {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 2.75rem 1.5rem 0;
+}
+
+h1 {
+  font-size: 2rem; line-height: 1.15; letter-spacing: -.025em;
+  margin: 0 0 1rem;
+}
+h2 { font-size: 1.22rem; line-height: 1.3; letter-spacing: -.015em; margin: 2.4rem 0 .7rem; }
+h3 { font-size: 1rem; margin: 1.9rem 0 .5rem; }
+
+p, ul, ol { margin: 0 0 1.15rem; }
+ul, ol { padding-left: 1.25rem; }
+li { margin-bottom: .4rem; }
+
+a { color: var(--accent); text-underline-offset: 2px; }
+a:hover { text-decoration-thickness: 2px; }
+
+strong { font-weight: 650; }
+
+hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
+
+/* ---- code ------------------------------------------------------------ */
+
+code, kbd, pre, .meta, time, .mono {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+
+code {
+  font-size: .855em;
+  background: var(--card);
+  padding: .12em .38em;
+  border-radius: 3px;
+}
+
+pre {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: .9rem 1rem;
+  overflow-x: auto;
+  font-size: .82rem;
+  line-height: 1.55;
+  margin: 0 0 1.3rem;
+}
+pre code { background: none; padding: 0; font-size: inherit; }
+
+blockquote {
+  margin: 0 0 1.2rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--accent);
+  color: var(--dim);
+}
+
+/* ---- home ------------------------------------------------------------ */
+
+.lede p { color: var(--ink); }
+
+.disclosure {
+  color: var(--dim);
+  border-left: 2px solid var(--accent);
+  padding-left: .9rem;
+  margin-bottom: 1.5rem;
+}
+.disclosure strong { color: var(--ink); }
+
+.section {
+  font-size: .76rem; text-transform: uppercase; letter-spacing: .1em;
+  color: var(--dim); font-weight: 600;
+  margin: 3rem 0 0; padding-bottom: .6rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.postlist { list-style: none; padding: 0; margin: 0; }
+.postlist li { padding: 1.6rem 0; border-bottom: 1px solid var(--rule); margin: 0; }
+.postlist time { font-size: .76rem; color: var(--dim); letter-spacing: .02em; }
+.postlist h2 { margin: .3rem 0 .4rem; font-size: 1.16rem; }
+.postlist h2 a { color: var(--ink); text-decoration: none; }
+.postlist h2 a:hover { color: var(--accent); }
+.postlist p { color: var(--dim); margin: 0; font-size: .95rem; }
+
+/* ---- post ------------------------------------------------------------ */
+
+.meta { font-size: .78rem; color: var(--dim); margin: 0 0 .5rem; letter-spacing: .02em; }
+
+article h1 { margin-bottom: 1.6rem; }
+
+.takeaway {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-left: 2px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: .9rem 1.1rem;
+  margin: 0 0 1.5rem;
+}
+.takeaway p { margin: 0; }
+.takeaway .label {
+  display: block; font-size: .7rem; text-transform: uppercase;
+  letter-spacing: .1em; color: var(--dim); margin-bottom: .3rem; font-weight: 600;
+}
+
+/* ---- running --------------------------------------------------------- */
+
+.rows { list-style: none; padding: 0; margin: 0 0 1.5rem; }
+.rows li {
+  display: flex; justify-content: space-between; gap: 1rem;
+  padding: .65rem 0; border-bottom: 1px solid var(--rule); margin: 0;
+}
+.rows .what { font-weight: 550; }
+.rows .when { color: var(--dim); font-size: .8rem; white-space: nowrap; padding-top: .15rem; }
+
+/* ---- footer ---------------------------------------------------------- */
+
+footer {
+  max-width: var(--measure);
+  margin: 4rem auto 0;
+  padding: 1.4rem 1.5rem 3rem;
+  border-top: 1px solid var(--rule);
+  color: var(--dim);
+  font-size: .875rem;
+}
+footer p { margin: 0 0 .6rem; }
+.disclosure-foot strong { color: var(--ink); }
+.elsewhere a { color: var(--dim); }
+.elsewhere a:hover { color: var(--accent); }
+
+@media (max-width: 30rem) {
+  h1 { font-size: 1.65rem; }
+  main { padding-top: 2rem; }
+}
