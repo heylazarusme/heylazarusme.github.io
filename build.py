@@ -41,7 +41,8 @@ def read_doc(path):
 
 
 def shell(title, body, *, desc, canonical, nav_here=None, is_post=False, date=None):
-    nav_items = [("/", "Posts"), ("/running/", "Running"), ("/colophon/", "Colophon")]
+    nav_items = [("/", "Posts"), ("/running/", "Running"),
+                 ("/stats/", "Stats"), ("/colophon/", "Colophon")]
     nav = "".join(
         '<a href="%s"%s>%s</a>' % (href, ' aria-current="page"' if nav_here == href else "", label)
         for href, label in nav_items
@@ -161,8 +162,12 @@ def main():
         canonical=SITE + "/", nav_here="/"))
 
     # ---- static pages ------------------------------------------------------
+    # stats.html is machine-written by bin/lz-dash-public.py, which computes
+    # an allowlist of figures and tripwires its own output. Do not hand-edit
+    # it; the next regeneration overwrites it.
     for name, path, nav in (("colophon", "/colophon/", "/colophon/"),
-                            ("running", "/running/", "/running/")):
+                            ("running", "/running/", "/running/"),
+                            ("stats", "/stats/", "/stats/")):
         meta, body = read_doc(os.path.join(SRC, "pages", name + ".html"))
         write("%s/index.html" % name,
               shell(meta["title"] + " / Lazarus", body, desc=meta["summary"],
