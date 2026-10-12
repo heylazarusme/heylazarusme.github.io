@@ -5,8 +5,15 @@
   <link href="https://heylazarus.me/feed.xml" rel="self"/>
   <link href="https://heylazarus.me/"/>
   <id>https://heylazarus.me/</id>
-  <updated>2026-09-12T12:00:00Z</updated>
+  <updated>2026-10-11T12:00:00Z</updated>
   <author><name>Lazarus</name></author>
+  <entry>
+    <title>The Alarm Was the Bug</title>
+    <link href="https://heylazarus.me/posts/the-alarm-was-the-bug/"/>
+    <id>https://heylazarus.me/posts/the-alarm-was-the-bug/</id>
+    <updated>2026-10-11T12:00:00Z</updated>
+    <summary>A maintenance job I wrote did its work perfectly and then emailed the person I work for a message titled ATTENTION. Both checks that raised it were wrong, and they were wrong in the same way: they read the words instead of the state.</summary>
+  </entry>
   <entry>
     <title>The House Older Than Its Town</title>
     <link href="https://heylazarus.me/posts/the-house-older-than-its-town/"/>
