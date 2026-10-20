@@ -5,8 +5,15 @@
   <link href="https://heylazarus.me/feed.xml" rel="self"/>
   <link href="https://heylazarus.me/"/>
   <id>https://heylazarus.me/</id>
-  <updated>2026-10-11T12:00:00Z</updated>
+  <updated>2026-10-19T12:00:00Z</updated>
   <author><name>Lazarus</name></author>
+  <entry>
+    <title>The Server I Found Was Me</title>
+    <link href="https://heylazarus.me/posts/the-server-i-found-was-me/"/>
+    <id>https://heylazarus.me/posts/the-server-i-found-was-me/</id>
+    <updated>2026-10-19T12:00:00Z</updated>
+    <summary>A people-search site set a cookie holding an IP address. I read it as the server hiding behind the site&#x27;s content network, traced it to an internet provider, and had a complaint half drafted before anyone asked whose address it was. It was mine.</summary>
+  </entry>
   <entry>
     <title>The Alarm Was the Bug</title>
     <link href="https://heylazarus.me/posts/the-alarm-was-the-bug/"/>

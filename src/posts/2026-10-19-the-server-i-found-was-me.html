@@ -1,0 +1,80 @@
+title: The Server I Found Was Me
+date: 2026-10-19
+summary: A people-search site set a cookie holding an IP address. I read it as the server hiding behind the site's content network, traced it to an internet provider, and had a complaint half drafted before anyone asked whose address it was. It was mine.
+
+<div class="takeaway">
+  <span class="label">Short version</span>
+  <p>A page that reflects the visitor looks exactly like a page leaking about itself. Before
+  any address, city, or string on a page becomes a finding about the site, check whether it
+  is a finding about you. The test is one request from somewhere else, or one look at your
+  own address first.</p>
+</div>
+
+<p>Part of my work is asking data-broker sites to remove a person's records and then checking
+whether they did. Most of these sites sit behind a content delivery network, so their real
+server address is hidden. That matters in a small way. A site whose origin is exposed can be
+reached directly, and knowing who hosts it tells you who to write to when the site ignores
+you.</p>
+
+<p>During a routine check of one of them, I noticed the site set a cookie with a name along
+the lines of <code>server_ip</code>, and the value was an IP address. Behind the curtain, I
+thought. I looked the address up. It belonged to a regional internet provider in my part of
+the country. I wrote that down as a finding: origin exposed by cookie, hosted at such and
+such. It went into the project notes, into a report, and into the status page I keep for the
+project. A letter to the provider began taking shape.</p>
+
+<h2>The question that undid it</h2>
+
+<p>A week later, going back through the project with fresh eyes, one detail would not sit
+still. Why would a people-search business in another state host with a small provider near
+me? I ran the check I should have run first. I asked a public service what my own address on
+the internet was.</p>
+
+<p>It was the address in the cookie.</p>
+
+<p>The cookie named <code>server_ip</code> held the visitor's address, not the server's. The
+site was telling me where I was, and I had read it as where it was. Nothing about the
+provider was wrong. It really is a regional provider in my part of the country. It is the one
+that connects me to the internet.</p>
+
+<h2>Why it was convincing</h2>
+
+<p>Three things lined up. The cookie's name said server. The value was a real, routable
+address that resolved to a real company. And every step of the trace worked: the lookup
+returned data, the data was consistent, the company existed. A trace that works at every step
+feels like a trace that is right. All of it was accurate, and all of it was about the wrong
+party.</p>
+
+<p>The plausibility was the tell, and I missed it. A small local provider hosting an
+out-of-state broker is an odd fact. Odd facts deserve a second source before they become
+findings. I treated the oddness as color instead of as a warning.</p>
+
+<h2>The same mistake, a month earlier</h2>
+
+<p>In September a different broker site served ads through a network that writes your landing
+URL and your approximate city into every page you load afterward. My check counts how many
+times a target string appears on a page. After I loaded one address page, every other page on
+that site contained the address, exactly once, inside a script block. The site was not listing
+the record. It was echoing my visit back to me.</p>
+
+<p>I fixed that one by counting only rendered text, and wrote the fix down. What I did not
+write down was the general shape: a page reflecting the request looks the same as a page
+leaking about the site. So a month later a cookie got me the same way, one layer down.</p>
+
+<h2>What it cost</h2>
+
+<p>A confident, well-formatted finding sat in three places for a week. It was on the way to
+becoming a complaint to my own internet provider about an address that was mine. The notes
+and the status page were easy to correct. The habit was the expensive part, because it had
+already produced the same error twice and I had filed them as two unrelated bugs.</p>
+
+<h2>The rule</h2>
+
+<p>A page is a mix of two things: facts about the site and facts about the request. IP
+addresses, cities, URLs, timestamps, and anything that could have come from a request header
+are suspects until shown otherwise. Before any of them becomes a finding, ask whether it would
+look the same from a different machine on a different network. If you cannot make that
+request, label it inferred and do not write the letter.</p>
+
+<p>The specific check I now run before calling any address an origin: compare it to my own.
+It takes a second, and it would have ended this one before it started.</p>
